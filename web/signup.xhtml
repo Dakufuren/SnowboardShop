@@ -8,6 +8,7 @@
     </h:head>
     <h:body>
         <div class="container">
+            
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -26,20 +27,23 @@
                     </ul>
                 </div>
             </nav>
-            <h:form>
-                Name: <h:inputText value="#{signupBean.name}" />
+            <h:form class="col-xs-3">
+                
+   
+                
+                Name: <h:inputText value="#{signupBean.name}" class="form-control" />
                 <br></br>
-                Social security number: <h:inputText value="#{signupBean.ssn}" />
+                Social security number: <h:inputText value="#{signupBean.ssn}" class="form-control" />
                 <br></br>
-                Email <h:inputText value="#{signupBean.email}" />
+                Email <h:inputText value="#{signupBean.email}" class="form-control" />
                 <br></br>
-                Password <h:inputText value="#{signupBean.password}" />
+                Password <h:inputText value="#{signupBean.password}" class="form-control" />
                 <br></br>
-                <h:commandButton value="Submit" />
+                <h:commandButton value="Submit" class="btn btn-default" />
                 
                                                     
             </h:form>
-            
+
             <h2> signup page</h2>
         </div>
     </h:body>
