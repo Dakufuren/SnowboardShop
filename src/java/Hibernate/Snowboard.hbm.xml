@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 18, 2017 4:22:53 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Hibernate.Snowboard" table="snowboard" catalog="etvffqgz_snowshop" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="brandName" type="string">
+            <column name="brandName" length="45" not-null="true" />
+        </property>
+        <property name="productName" type="string">
+            <column name="productName" length="45" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="16777215" not-null="true" />
+        </property>
+        <property name="pictureLink" type="string">
+            <column name="pictureLink" length="300" not-null="true" />
+        </property>
+        <property name="boardLength" type="java.lang.Integer">
+            <column name="boardLength" />
+        </property>
+    </class>
+</hibernate-mapping>

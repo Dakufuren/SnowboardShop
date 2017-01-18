@@ -27,13 +27,12 @@
             </nav>
 
             <h2>Test List</h2>
-            <h:dataTable value="#{snowboardBean.objectList}" var="snowboardObject">
+            <h:dataTable value="#{snowboardBean.snowList}" var="list">
                 <h:column>
-                    ID: #{snowboardObject.id}<br></br>
-                    Product Name: #{snowboardObject.productName}<br></br>
-                    Brand Name: #{snowboardObject.brandName} <br></br>
-                    Price: #{snowboardObject.price}<br></br>
-                    <h:graphicImage value="#{snowboardObject.pictureLink}" width="200px" height="200px" /> <br></br>
+                    ID: #{list.id}<br></br>
+                    Product Name: #{list.productName}<br></br>
+                    Brand Name: #{list.brandName} <br></br>
+                    <h:graphicImage value="#{list.pictureLink}" width="200px" height="200px" /> <br></br>
                     <hr></hr>
                    
                 </h:column>
