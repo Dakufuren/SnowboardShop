@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import Hibernate.HibernateHelper;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 
@@ -22,6 +23,7 @@ public class LoginBean {
      * Creates a new instance of LoginBean
      */
     public LoginBean() {
+        
     }
 
     /**
@@ -52,4 +54,26 @@ public class LoginBean {
         this.password = password;
     }
     
+    public void validateLogin(String email, String password){
+        System.out.println(email);
+        System.out.println(password);
+        
+        HibernateHelper hh = new HibernateHelper();
+        Boolean isUserMatched = hh.isUserMatched(email, password);
+        
+        if(isUserMatched == true){
+            System.out.println(isUserMatched);
+            System.out.println("YOU ARE LOGGED IN");
+            
+            DataStorage ds = new DataStorage();
+            ds.setPass(password);
+            ds.setEmail(email);
+            setPassword(password);
+            setEmail(email);
+        }
+        else{
+            System.out.println(isUserMatched);
+            System.out.println("YOU ARE NOT LOGGED IN");
+        }
+    }
 }

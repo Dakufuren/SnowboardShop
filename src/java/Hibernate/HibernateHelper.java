@@ -48,21 +48,28 @@ public class HibernateHelper {
 
         try {
             tx = session.beginTransaction();    
-            Query q = session.createQuery("SELECT * FROM `account` WHERE `name` =" + "'"+ email + "'" + " AND `password` = " + "'"+ pass + "'");
-            accountList = (List<Account>) q.list();
+
+            String queryString = "Select l from Account l where l.email= :email";
+            Query query = session.createQuery(queryString);
+            query.setParameter("email", email);
+            accountList = query.list(); 
+            
+            for (Account a : accountList) {
+                System.out.println("For Each");
+ 
+                if (a.getEmail().equals(email) && a.getPassword().equals(pass)) {
+                    loginMatched = true;
+                }
+                else{
+                    loginMatched = false;
+                }
+            }
            
             tx.commit();
 
         } catch (Exception e) {
             e.printStackTrace();
         } 
-        
-        String tempEmail = accountList.get(0).getEmail();
-        String tempPass = accountList.get(0).getPassword();
-        
-        if(email == tempEmail && pass == tempPass){
-            loginMatched = true;
-        }
         
         return loginMatched;
     }

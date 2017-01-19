@@ -16,6 +16,8 @@ public class DataStorage {
     
     
     private static List<Snowboard>snowlist; 
+    private static String email;
+    private static String pass;
 
     /**
      * @return the snowlist
@@ -32,4 +34,32 @@ public class DataStorage {
     }
     
     // More methods to hold information in the future
+
+    /**
+     * @return the user
+     */
+    public static String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param aUser the user to set
+     */
+    public static void setEmail(String aEmail) {
+        email = aEmail;
+    }
+
+    /**
+     * @return the pass
+     */
+    public static String getPass() {
+        return pass;
+    }
+
+    /**
+     * @param aPass the pass to set
+     */
+    public static void setPass(String aPass) {
+        pass = aPass;
+    }
 }
