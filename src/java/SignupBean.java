@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import Hibernate.HibernateHelper;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 
@@ -19,6 +20,7 @@ public class SignupBean {
     private String email;
     private String ssn;
     private String password;
+    HibernateHelper hh = new HibernateHelper();
 
     /**
      * Creates a new instance of SignupBean
@@ -81,5 +83,13 @@ public class SignupBean {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public void addAccount(String email, String name, int ssn, String password){
+        
+    hh.addAccount(email, name, ssn, password);
+}
+    
+    
+    
     
 }

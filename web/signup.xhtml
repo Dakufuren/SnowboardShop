@@ -35,15 +35,15 @@
               <h2> Sign up here!</h2>  
    
                 
-                Name: <h:inputText value="#{signupBean.name}" class="form-control" />
+                Name: <h:inputText binding="#{name}" class="form-control" />
                 <br></br>
-                Social security number: <h:inputText value="#{signupBean.ssn}" class="form-control" />
+                Social security number: <h:inputText binding="#{ssn}" class="form-control" />
                 <br></br>
-                Email <h:inputText value="#{signupBean.email}" class="form-control" />
+                Email <h:inputText binding="#{email}" class="form-control" />
                 <br></br>
-                Password <h:inputText value="#{signupBean.password}" class="form-control" />
+                Password <h:inputText binding="#{password}" class="form-control" />
                 <br></br>
-                <h:commandButton value="Submit" class="btn btn-default" />
+                <h:commandButton value="Submit" class="btn btn-default" action="#{signupBean.addAccount(email.value, name.value, ssn.value, password.value)}" />
                 
                                                     
             </h:form>

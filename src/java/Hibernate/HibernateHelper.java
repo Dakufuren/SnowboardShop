@@ -17,6 +17,7 @@ import org.hibernate.Transaction;
 public class HibernateHelper {
 
     Session session = null;
+    
 
     public HibernateHelper() {
         this.session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -65,4 +66,21 @@ public class HibernateHelper {
         
         return loginMatched;
     }
+    
+    public void addAccount(String email, String name, int ssn, String password){
+        Transaction tx = null;
+        byte role = 1;
+        try{
+            tx = session.beginTransaction();
+            Account a = new Account(email, name, ssn, password, role);
+            session.save(a);
+            tx.commit();
+        
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        
+        
+    } 
+        
 }
