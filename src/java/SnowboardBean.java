@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-import Hibernate.SnowHelper;
+import Hibernate.HibernateHelper;
 import Hibernate.Snowboard;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,27 +22,25 @@ public class SnowboardBean {
     
     private List<Snowboard> snowList;
     DataStorage ds = new DataStorage();
-    private SnowHelper snow;
+    private HibernateHelper snow;
     /**
      * Creates a new instance of SnowboardBean
      */
     public SnowboardBean() {
-        System.out.println(snowList + "  <- snowList Value1");
         
         snowList = ds.getSnowlist();
         
         if(snowList == null){
             snowList = new ArrayList<>();
-            snow = new SnowHelper();
+            snow = new HibernateHelper();
         
             snowList = snow.getSnowboards();
             
             ds.updateSnowlist(snowList);
-            System.out.println(snowList + "  <- snowList Value2");
+            System.out.println(snowList + "  <- snowList Initialize to DataStorage");
         }
         else{
-            snowList = ds.getSnowlist();
-            System.out.println(snowList + "  <- snowList Value3");
+            System.out.println(snowList + "  <- snowList Get from DataStorage");
         }
 
     }

@@ -40,16 +40,17 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-configuration>
-  <session-factory>
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://cpsrv01.misshosting.com:3306/etvffqgz_snowshop</property>
-    <property name="hibernate.connection.username">etvffqgz_user</property>
-    <property name="hibernate.connection.password">759486456</property>
-    <property name="hibernate.show_sql">true</property>
-    <property name="hibernate.current_session_context_class">thread</property>
-    <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
-    <mapping resource="Hibernate/Account.hbm.xml"/>
-    <mapping resource="Hibernate/Snowboard.hbm.xml"/>
-  </session-factory>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://cpsrv01.misshosting.com:3306/etvffqgz_snowshop?autoReconnect=true</property>
+        <property name="hibernate.connection.username">etvffqgz_user</property>
+        <property name="hibernate.connection.password">759486456</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
+        <property name="hibernate.transaction.auto_close_session">true</property>
+        <mapping resource="Hibernate/Account.hbm.xml"/>
+        <mapping resource="Hibernate/Snowboard.hbm.xml"/>
+    </session-factory>
 </hibernate-configuration>
