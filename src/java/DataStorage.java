@@ -31,5 +31,5 @@ public class DataStorage {
         snowlist = aSnowlist;
     }
     
-    
+    // More methods to hold information in the future
 }
