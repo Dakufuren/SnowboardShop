@@ -21,19 +21,28 @@ import javax.enterprise.context.Dependent;
 public class SnowboardBean {
     
     private List<Snowboard> snowList;
+    DataStorage ds = new DataStorage();
     private SnowHelper snow;
     /**
      * Creates a new instance of SnowboardBean
      */
     public SnowboardBean() {
-        if(snowList != null){
-            
-        }
-        else{
+        System.out.println(snowList + "  <- snowList Value1");
+        
+        snowList = ds.getSnowlist();
+        
+        if(snowList == null){
             snowList = new ArrayList<>();
             snow = new SnowHelper();
         
             snowList = snow.getSnowboards();
+            
+            ds.updateSnowlist(snowList);
+            System.out.println(snowList + "  <- snowList Value2");
+        }
+        else{
+            snowList = ds.getSnowlist();
+            System.out.println(snowList + "  <- snowList Value3");
         }
 
     }
