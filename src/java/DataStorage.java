@@ -18,6 +18,7 @@ public class DataStorage {
     private static List<Snowboard>snowlist; 
     private static String email;
     private static String pass;
+    
 
     /**
      * @return the snowlist
@@ -62,4 +63,7 @@ public class DataStorage {
     public static void setPass(String aPass) {
         pass = aPass;
     }
+    
+    
+    
 }
