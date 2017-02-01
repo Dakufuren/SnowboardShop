@@ -5,8 +5,13 @@
  */
 
 import Hibernate.HibernateHelper;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -18,6 +23,8 @@ public class LoginBean {
     
     private String email;
     private String password;
+    
+    DataStorage ds = new DataStorage();
 
     /**
      * Creates a new instance of LoginBean
@@ -54,7 +61,7 @@ public class LoginBean {
         this.password = password;
     }
     
-    public void validateLogin(String email, String password){
+    public void validateLogin(String email, String password) throws IOException{
         System.out.println(email);
         System.out.println(password);
         
@@ -70,6 +77,10 @@ public class LoginBean {
             ds.setEmail(email);
             setPassword(password);
             setEmail(email);
+            
+            ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+            context.redirect("index.xhtml");
+            
         }
         else{
             System.out.println(isUserMatched);

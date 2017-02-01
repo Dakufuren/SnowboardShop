@@ -6,6 +6,7 @@
 
 import Hibernate.HibernateHelper;
 import Hibernate.Snowboard;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -20,6 +21,8 @@ import javax.enterprise.context.Dependent;
 @Dependent
 public class SnowboardBean {
     
+    private String loggedIn = "Login";
+    
     private List<Snowboard> snowList;
     DataStorage ds = new DataStorage();
     private HibernateHelper snow;
@@ -29,6 +32,9 @@ public class SnowboardBean {
     public SnowboardBean() {
         
         snowList = ds.getSnowlist();
+        if(ds.getEmail() != null){
+            loggedIn = ds.getEmail();
+        }
         
         if(snowList == null){
             snowList = new ArrayList<>();
@@ -51,5 +57,11 @@ public class SnowboardBean {
     public List<Snowboard> getSnowList() {
         return snowList;
     }
-    
+
+    /**
+     * @return the loggedIn
+     */
+    public String getLoggedIn() {
+        return loggedIn;
+    }
 }

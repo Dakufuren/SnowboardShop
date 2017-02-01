@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
         <title>Homepage</title>
@@ -19,8 +20,18 @@
                         <li><h:link value="About" outcome="about"/></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><h:link outcome="login"><span class="glyphicon glyphicon-user"></span> Login</h:link></li>
-                        <li><h:link outcome="signup"><span class="glyphicon glyphicon-log-in"></span> Signup</h:link></li>
+
+                        <c:set var="loggedIn" scope="session" value="#{snowboardBean.loggedIn}"/>
+                        <c:choose>
+                            <c:when test="${loggedIn == 'Login'}">
+                                <li><h:link outcome="login"><span class="glyphicon glyphicon-user"></span>#{snowboardBean.loggedIn}</h:link></li>
+                                <li><h:link outcome="signup"><span class="glyphicon glyphicon-log-in"></span> Signup</h:link></li>
+                            </c:when>    
+                            <c:otherwise>
+                                <li><h:link outcome="index"><span class="glyphicon glyphicon-user"></span>#{snowboardBean.loggedIn}</h:link></li>
+                            </c:otherwise>
+                        </c:choose>
+                        
                         <li><h:link outcome="cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</h:link></li>
                     </ul>
                 </div>
@@ -36,7 +47,7 @@
                     <h:button value="More info" outcome="infopage"></h:button>
                     // use method for saving ID of the board you want to show more information about in infopage.xhtml
                     <hr></hr>
-                   
+
                 </h:column>
             </h:dataTable>
 
