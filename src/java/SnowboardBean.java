@@ -6,12 +6,18 @@
 
 import Hibernate.HibernateHelper;
 import Hibernate.Snowboard;
+import java.awt.BorderLayout;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -20,6 +26,13 @@ import javax.enterprise.context.Dependent;
 @Named(value = "snowboardBean")
 @Dependent
 public class SnowboardBean {
+
+    /**
+     * @return the productId
+     */
+    
+    @ManagedProperty(value="#{param.id}")
+    private Long id; // +setter
     
     private String loggedIn = "Login";
     
@@ -56,6 +69,17 @@ public class SnowboardBean {
      */
     public List<Snowboard> getSnowList() {
         return snowList;
+    }
+    
+    public void forwardId(){
+        System.out.println("ForwardID");
+        System.out.println(id);
+        
+    }
+    
+    public String outcome(){
+        System.out.println("Clicked!!!");
+        return "clicked";
     }
 
     /**

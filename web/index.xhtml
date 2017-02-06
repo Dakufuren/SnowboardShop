@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
         <title>Homepage</title>
@@ -31,7 +32,7 @@
                                 <li><h:link outcome="index"><span class="glyphicon glyphicon-user"></span>#{snowboardBean.loggedIn}</h:link></li>
                             </c:otherwise>
                         </c:choose>
-                        
+
                         <li><h:link outcome="cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</h:link></li>
                     </ul>
                 </div>
@@ -40,14 +41,16 @@
             <h2>Test List</h2>
             <h:dataTable value="#{snowboardBean.snowList}" var="list">
                 <h:column>
+                    <h:form>
+
                     ID: #{list.id}<br></br>
                     Product Name: #{list.productName}<br></br>
                     Brand Name: #{list.brandName} <br></br>
-                    <h:graphicImage value="#{list.pictureLink}" width="200px" height="200px" /> <br></br>
-                    <h:button value="More info" outcome="infopage"></h:button>
-                    // use method for saving ID of the board you want to show more information about in infopage.xhtml
-                    <hr></hr>
-
+                    
+                        <h:commandLink action="#{snowboardBean.forwardId()}" value="insert">
+                            <f:param name="id" value="#{list.id}" />
+                        </h:commandLink>
+                    </h:form>
                 </h:column>
             </h:dataTable>
 

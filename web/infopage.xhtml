@@ -38,6 +38,15 @@
             </nav>
             
             <h2> Information about SNOWBOOOOARRDDDDDDDDDDDDD</h2>
+            
+            <h:dataTable value="#{snowboardBean.snowList[snowboardBean.productId]}" var="list">
+                <h:column>
+                    ID: #{list.id}<br></br>
+                    Product Name: #{list.productName}<br></br>
+                    Brand Name: #{list.brandName} <br></br>
+                </h:column>
+            </h:dataTable>
+            
         </div>
     </h:body>
 </html>
