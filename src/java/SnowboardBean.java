@@ -16,8 +16,10 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -31,9 +33,6 @@ public class SnowboardBean {
      * @return the productId
      */
     
-    @ManagedProperty(value="#{param.id}")
-    private Long id; // +setter
-    
     private String loggedIn = "Login";
     
     private List<Snowboard> snowList;
@@ -45,6 +44,7 @@ public class SnowboardBean {
     public SnowboardBean() {
         
         snowList = ds.getSnowlist();
+        
         if(ds.getEmail() != null){
             loggedIn = ds.getEmail();
         }
@@ -71,16 +71,32 @@ public class SnowboardBean {
         return snowList;
     }
     
-    public void forwardId(){
-        System.out.println("ForwardID");
-        System.out.println(id);
-        
-    }
-    
-    public String outcome(){
-        System.out.println("Clicked!!!");
-        return "clicked";
-    }
+// NOT USED ANYMORE    
+//    public void forwardId(){
+//        FacesContext fc = FacesContext.getCurrentInstance();
+//        Map<String,String> params = fc.getExternalContext().getRequestParameterMap();
+//		String tempID = params.get("id");
+//                
+//                id = Integer.parseInt(tempID) - 1;
+//
+//                String tempStr =  Integer.toString(id) + "  !!!ID NUMBER";
+//        System.out.println("ForwardID");
+//        System.out.println(getId());
+//
+//        try {
+//            
+//        HttpServletResponse response = (HttpServletResponse)fc.getExternalContext().getResponse();
+//        response.sendRedirect("infopage.xhtml");
+//            //fc.getExternalContext().dispatch("infopage.xhtml");
+//        } catch (IOException ex) {
+//            Logger.getLogger(SnowboardBean.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+//    
+//    public String outcome(){
+//        System.out.println("Clicked!!!");
+//        return "clicked";
+//    }
 
     /**
      * @return the loggedIn

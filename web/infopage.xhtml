@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
         <title>infopage</title>
@@ -39,11 +41,16 @@
             
             <h2> Information about SNOWBOOOOARRDDDDDDDDDDDDD</h2>
             
-            <h:dataTable value="#{snowboardBean.snowList[snowboardBean.productId]}" var="list">
+            CURRENT ID: #{param.id}
+            <h:dataTable value="#{snowboardBean.snowList[param.id - 1]}" var="list">
                 <h:column>
                     ID: #{list.id}<br></br>
                     Product Name: #{list.productName}<br></br>
                     Brand Name: #{list.brandName} <br></br>
+                    <h:button onclick="#{cartBean.addToCart()}" value="Add to cart" class="btn btn-default">
+                            <f:param name="id" value="#{list.id}" />
+                    </h:button>
+                    
                 </h:column>
             </h:dataTable>
             

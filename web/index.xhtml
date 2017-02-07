@@ -41,16 +41,18 @@
             <h2>Test List</h2>
             <h:dataTable value="#{snowboardBean.snowList}" var="list">
                 <h:column>
-                    <h:form>
 
                     ID: #{list.id}<br></br>
                     Product Name: #{list.productName}<br></br>
                     Brand Name: #{list.brandName} <br></br>
-                    
-                        <h:commandLink action="#{snowboardBean.forwardId()}" value="insert">
+                    <img src="#{list.pictureLink}" width="200px" height="200px"/><br></br>
+                    <br></br>
+
+                    <h:button outcome="infopage.xhtml" value="View" class="btn btn-default">
                             <f:param name="id" value="#{list.id}" />
-                        </h:commandLink>
-                    </h:form>
+                    </h:button>
+                    
+                    <hr></hr>
                 </h:column>
             </h:dataTable>
 
