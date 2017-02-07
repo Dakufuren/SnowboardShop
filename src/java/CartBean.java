@@ -44,6 +44,15 @@ public class CartBean {
         
     }
     
+    public void delFromCart(){
+        for (Snowboard s : cartList) {
+            if(s.getProductName().equals(selectedItem)){
+                cartList.remove(s);
+                System.out.println("Removed!!!!");
+            }
+        }
+    }
+    
     public void addToCart(){
         FacesContext fc = FacesContext.getCurrentInstance();
         Map<String,String> params = fc.getExternalContext().getRequestParameterMap();
@@ -57,6 +66,9 @@ public class CartBean {
         System.out.println(cartList.size());
     }
 
+    public void checkOut(){
+
+    }
 
     /**
      * @return the selectedItem

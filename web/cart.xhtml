@@ -18,10 +18,9 @@
                     <ul class="nav navbar-nav">
                         <li><h:link value="Home" outcome="index"/></li>
                         <li><h:link value="About" outcome="about"/></li>
-                        
+
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><h:link outcome="login"><span class="glyphicon glyphicon-user"></span>#{snowboardBean.loggedIn}</h:link></li>
                         <c:set var="loggedIn" scope="session" value="#{snowboardBean.loggedIn}"/>
                         <c:choose>
                             <c:when test="${loggedIn == 'Login'}">
@@ -32,18 +31,31 @@
                                 <li><h:link outcome="index"><span class="glyphicon glyphicon-user"></span>#{snowboardBean.loggedIn}</h:link></li>
                             </c:otherwise>
                         </c:choose>
-                        
+
                         <li><h:link outcome="cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</h:link></li>
-                        <li><h:link outcome="login"><span class="glyphicon glyphicon-user"></span>#{snowboardBean.loggedIn}</h:link></li>
                     </ul>
                 </div>
             </nav>
-            
+
+            <h2>Cart</h2>
+            Here is your cart:
             <h:selectOneMenu value="#{cartBean.selectedItem}">
                 <f:selectItems value="#{cartBean.cartList}" var="list" 
-                               itemLabel="#{list.productName}" itemValue="#{list.id}" />
-            </h:selectOneMenu>
-            <h2> Information about SNOWBOOOOARRDDDDDDDDDDDDD</h2>
+                               itemLabel="#{list.productName}" itemValue="#{list.id}"/>
+
+            </h:selectOneMenu> 
+            Price:
+            <br></br>
+            <br></br>
+            Total Sum:
+            
+            <br></br>
+            <br></br>
+            
+            <h:button id="removeSelected" onclick="#{cartBean.delFromCart()}" value="Remove Selected" class="btn btn-default btn-xs"/>
+            &nbsp;
+            <h:button id="removeSelected" onclick="#{cartBean.checkOut()}" value="Checkout Items" class="btn btn-default btn-xs"/>
+
         </div>
     </h:body>
 </html>
