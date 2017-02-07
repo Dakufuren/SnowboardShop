@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
         <title>infopage</title>
@@ -20,7 +21,7 @@
                         
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        
+                        <li><h:link outcome="login"><span class="glyphicon glyphicon-user"></span>#{snowboardBean.loggedIn}</h:link></li>
                         <c:set var="loggedIn" scope="session" value="#{snowboardBean.loggedIn}"/>
                         <c:choose>
                             <c:when test="${loggedIn == 'Login'}">
@@ -33,10 +34,15 @@
                         </c:choose>
                         
                         <li><h:link outcome="cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</h:link></li>
+                        <li><h:link outcome="login"><span class="glyphicon glyphicon-user"></span>#{snowboardBean.loggedIn}</h:link></li>
                     </ul>
                 </div>
             </nav>
             
+            <h:selectOneMenu value="#{cartBean.selectedItem}">
+                <f:selectItems value="#{cartBean.cartList}" var="list" 
+                               itemLabel="#{list.productName}" itemValue="#{list.id}" />
+            </h:selectOneMenu>
             <h2> Information about SNOWBOOOOARRDDDDDDDDDDDDD</h2>
         </div>
     </h:body>

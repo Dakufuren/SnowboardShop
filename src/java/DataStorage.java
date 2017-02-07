@@ -16,6 +16,7 @@ public class DataStorage {
     
     
     private static List<Snowboard>snowlist; 
+    private static List<Snowboard>cartlist; 
     private static String email;
     private static String pass;
     
@@ -32,6 +33,17 @@ public class DataStorage {
      */
     public static void updateSnowlist(List<Snowboard> aSnowlist) {
         snowlist = aSnowlist;
+    }
+    
+    public static List<Snowboard> getCart() {
+        return cartlist;
+    }
+
+    /**
+     * @param aSnowlist the snowlist to set
+     */
+    public static void updateCart(List<Snowboard> aCart) {
+        cartlist = aCart;
     }
     
     // More methods to hold information in the future
