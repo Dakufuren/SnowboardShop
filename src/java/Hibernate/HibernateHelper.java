@@ -85,9 +85,40 @@ public class HibernateHelper {
         
         }catch (Exception e){
             e.printStackTrace();
-        }
-        
+        } 
         
     } 
+    
+     public boolean isAdmin(String email){
+         Transaction tx = null;
+         Boolean isAdmin = false;
+         List<Account> accountList = null;
+         
+         try{
+             tx = session.beginTransaction();
+             String queryString = "Select l from Account l where l.email= :email AND role=2";
+             Query query = session.createQuery(queryString);
+             query.setParameter("email", email);
+             accountList = query.list();
+             
+             
+             for (Account a : accountList) {
+ 
+                if (a.getEmail().equals(email)) {
+                    isAdmin = true;
+                }
+                else{
+                    isAdmin = false;
+                }
+             }
+             
+             tx.commit();
+             
+         }catch(Exception e){
+             e.printStackTrace();
+         }
+        
+         return isAdmin;
+    }
         
 }

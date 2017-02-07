@@ -9,6 +9,9 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
         <title>Homepage</title>
     </h:head>
+     <f:metadata>
+        <f:viewAction action="#{adminBean.checkAdmin()}" />  //incase someone is already logged in and does not go to login page, we will check if this user is an admin or not when we load the page
+    </f:metadata>
     <h:body>
         <div class="container">
             <nav class="navbar navbar-inverse">
