@@ -19,6 +19,7 @@ public class AdminBean {
     private String email;
     HibernateHelper hh = new HibernateHelper();
     DataStorage ds = new DataStorage();
+    private static boolean test;
 
     /**
      * Creates a new instance of AdminBean
@@ -34,10 +35,25 @@ public class AdminBean {
         
         if(checkIfAdmin == true){
             System.out.println("YOU ARE LOGGED IN AS ADMIN" +  "" +email + "" + checkIfAdmin);
+            test = true;
         }
         else
             System.out.println("YOU ARE NOT LOGGED IN AS ADMIN" +  "" +email + "" + checkIfAdmin);
         
+    }
+
+    /**
+     * @return the test
+     */
+    public boolean isTest() {
+        return test;
+    }
+
+    /**
+     * @param test the test to set
+     */
+    public void setTest(boolean test) {
+        this.test = test;
     }
     
 }

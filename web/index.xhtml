@@ -24,6 +24,12 @@
                         <li><h:link value="About" outcome="about"/></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        
+                       
+                          
+                          
+                          
+                        
 
                         <c:set var="loggedIn" scope="session" value="#{snowboardBean.loggedIn}"/>
                         <c:choose>
@@ -32,9 +38,13 @@
                                 <li><h:link outcome="signup"><span class="glyphicon glyphicon-log-in"></span> Signup</h:link></li>
                             </c:when>    
                             <c:otherwise>
+                                <li><h:link outcome="Admin" rendered="#{adminBean.test}"><span class="glyphicon glyphicon-wrench"></span>Admin</h:link></li>
                                 <li><h:link outcome="index"><span class="glyphicon glyphicon-user"></span>#{snowboardBean.loggedIn}</h:link></li>
+                                
                             </c:otherwise>
                         </c:choose>
+                        
+                       
 
                         <li><h:link outcome="cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</h:link></li>
                     </ul>
