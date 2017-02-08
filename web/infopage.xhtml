@@ -14,7 +14,7 @@
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#">Snowboard DeluxorZ</a>
+                        <a class="navbar-brand" href="#">SnowShop</a>
                     </div>
                     <ul class="nav navbar-nav">
                         <li><h:link value="Home" outcome="index"/></li>
@@ -30,6 +30,7 @@
                                 <li><h:link outcome="signup"><span class="glyphicon glyphicon-log-in"></span> Signup</h:link></li>
                             </c:when>    
                             <c:otherwise>
+                                <li><h:link outcome="Admin" rendered="#{adminBean.test}"><span class="glyphicon glyphicon-wrench"></span>Admin</h:link></li>
                                 <li><h:link outcome="index"><span class="glyphicon glyphicon-user"></span>#{snowboardBean.loggedIn}</h:link></li>
                             </c:otherwise>
                         </c:choose>
