@@ -8,28 +8,49 @@ import Hibernate.Snowboard;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.ConversationScoped;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 /**
  *
  * @author Albin
  */
-@Named(value = "cartBean")
-@Dependent
+@ManagedBean(name = "cartBean")
+@SessionScoped
 public class CartBean {
     
     private List<Snowboard> cartList;
     private List<Snowboard> snowList;
     private DataStorage ds;
+    private String selectedItem;
 
     /**
      * Creates a new instance of CartBean
      */
+    
+    @PostConstruct
+    public void init(){
+         cartList = new ArrayList<>();
+         ds = new DataStorage();
+    }
+
     public CartBean() {
-        cartList = new ArrayList<>();
-        ds = new DataStorage();
+        
+    }
+    
+    public void delFromCart(){
+        for (Snowboard s : cartList) {
+            if(s.getProductName().equals(selectedItem)){
+                cartList.remove(s);
+                System.out.println("Removed!!!!");
+            }
+        }
     }
     
     public void addToCart(){
@@ -38,10 +59,29 @@ public class CartBean {
 	int tempID = Integer.parseInt(params.get("id"));
         
         snowList = ds.getSnowlist();
-        
-        getCartList().add(snowList.get(tempID - 1));
-        
-        System.out.println("SNOWBOARD ID OF OBJECT: " +getCartList().get(0).getId());
+
+        cartList.add(snowList.get(tempID - 1));
+
+        System.out.println(getCartList().size());
+        System.out.println(cartList.size());
+    }
+
+    public void checkOut(){
+
+    }
+
+    /**
+     * @return the selectedItem
+     */
+    public String getSelectedItem() {
+        return selectedItem;
+    }
+
+    /**
+     * @param selectedItem the selectedItem to set
+     */
+    public void setSelectedItem(String selectedItem) {
+        this.selectedItem = selectedItem;
     }
 
     /**
@@ -50,4 +90,8 @@ public class CartBean {
     public List<Snowboard> getCartList() {
         return cartList;
     }
+
+    /**
+     * @param cartList the cartList to set
+     */
 }

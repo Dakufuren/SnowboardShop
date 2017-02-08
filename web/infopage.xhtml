@@ -48,9 +48,12 @@
                     ID: #{list.id}<br></br>
                     Product Name: #{list.productName}<br></br>
                     Brand Name: #{list.brandName} <br></br>
+
                     <h:button onclick="#{cartBean.addToCart()}" value="Add to cart" class="btn btn-default">
                             <f:param name="id" value="#{list.id}" />
                     </h:button>
+
+
                     
                 </h:column>
             </h:dataTable>
