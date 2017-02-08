@@ -15,6 +15,7 @@ public class Snowboard  implements java.io.Serializable {
      private String description;
      private String pictureLink;
      private Integer boardLength;
+     private Integer price;
 
     public Snowboard() {
     }
@@ -26,12 +27,13 @@ public class Snowboard  implements java.io.Serializable {
         this.description = description;
         this.pictureLink = pictureLink;
     }
-    public Snowboard(String brandName, String productName, String description, String pictureLink, Integer boardLength) {
+    public Snowboard(String brandName, String productName, String description, String pictureLink, Integer boardLength, Integer price) {
        this.brandName = brandName;
        this.productName = productName;
        this.description = description;
        this.pictureLink = pictureLink;
        this.boardLength = boardLength;
+       this.price = price;
     }
    
     public Integer getId() {
@@ -75,6 +77,20 @@ public class Snowboard  implements java.io.Serializable {
     
     public void setBoardLength(Integer boardLength) {
         this.boardLength = boardLength;
+    }
+
+    /**
+     * @return the price
+     */
+    public Integer getPrice() {
+        return price;
+    }
+
+    /**
+     * @param price the price to set
+     */
+    public void setPrice(Integer price) {
+        this.price = price;
     }
 
 

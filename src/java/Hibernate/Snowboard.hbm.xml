@@ -23,5 +23,8 @@
         <property name="boardLength" type="java.lang.Integer">
             <column name="boardLength" />
         </property>
+        <property name="price" type="java.lang.Integer">
+            <column name="price" />
+        </property>
     </class>
 </hibernate-mapping>
