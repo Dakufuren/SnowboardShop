@@ -12,6 +12,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
@@ -69,10 +70,16 @@ public class CartBean {
         changeOnList = true;
     }
 
-    public void checkOut() {
-
+    public String loginMessage() {
+        
+        return "message";
     }
     
+    public void checkOut() {
+  
+            
+    }
+
     public int calcTotalSum() {
         if (changeOnList == true || calcAlreadyRun == false) {
             totalSum = 0;

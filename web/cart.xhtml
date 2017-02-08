@@ -38,6 +38,10 @@
                     </ul>
                 </div>
             </nav>
+            <div class="well">
+                <h2>Cart</h2><br></br>
+                Your items in the cart:<br></br>
+            <hr></hr>
             <h:form>
                 <h:dataTable value="#{cartBean.cartList}" var="list" 
                              styleClass="table table-hover">
@@ -63,17 +67,18 @@
                     </h:column>
                 </h:dataTable>
             </h:form>
+            
 
             <br></br>
-            Total Sum: #{cartBean.calcTotalSum()}
-
+            Total Sum: #{cartBean.calcTotalSum()}            
             <br></br>
             <br></br>
             <h:form>
                 <h:commandLink id="clearCart" action="#{cartBean.clearCart()}" value="Clear Cart" class="btn btn-default btn-xs"/>
             &nbsp;
-                <h:commandLink id="checkoutButton" action="#{cartBean.checkOut()}" value="Checkout Items" class="btn btn-default btn-xs"/>
+            <h:button id="checkoutButton" outcome="checkout" value="Checkout Items" class="btn btn-default btn-xs"/>
             </h:form>
+            </div>
         </div>
     </h:body>
 </html>
