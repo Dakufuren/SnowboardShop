@@ -38,41 +38,42 @@
                     </ul>
                 </div>
             </nav>
-            
-            <h:dataTable value="#{cartBean.cartList}" var="list" 
-                         styleClass="table table-hover">
-                <h:column>    				
-                    <f:facet name="header">Product Name  </f:facet>    				
-                        #{list.productName}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Brand Name  </f:facet>
-                        #{list.brandName}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Board Length  </f:facet>
-                        #{list.boardLength}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Price  </f:facet>
-                        #{list.price}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Remove Product  </f:facet>
-                        <h:button id="removeSelected" onclick="#{cartBean.delFromCart()}" value="Remove Selected" class="btn btn-default btn-xs"/>
-                </h:column>
-            </h:dataTable>
+            <h:form>
+                <h:dataTable value="#{cartBean.cartList}" var="list" 
+                             styleClass="table table-hover">
+                    <h:column>    				
+                        <f:facet name="header">Product Name  </f:facet>    				
+                            #{list.productName}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Brand Name  </f:facet>
+                            #{list.brandName}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Board Length  </f:facet>
+                            #{list.boardLength}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Price  </f:facet>
+                            #{list.price}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Remove Product  </f:facet>
+                        <h:commandLink id="removeSelected" action="#{cartBean.delFromCart(list)}" value="Remove Selected" class="btn btn-default btn-xs"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
 
             <br></br>
-            Total Sum:
+            Total Sum: #{cartBean.calcTotalSum()}
 
             <br></br>
             <br></br>
-
-            <h:button id="clearCart" onclick="#{cartBean.clearCart()}" value="Clear Cart" class="btn btn-default btn-xs"/>
+            <h:form>
+                <h:commandLink id="clearCart" action="#{cartBean.clearCart()}" value="Clear Cart" class="btn btn-default btn-xs"/>
             &nbsp;
-            <h:button id="removeSelected" onclick="#{cartBean.checkOut()}" value="Checkout Items" class="btn btn-default btn-xs"/>
-
+                <h:commandLink id="checkoutButton" action="#{cartBean.checkOut()}" value="Checkout Items" class="btn btn-default btn-xs"/>
+            </h:form>
         </div>
     </h:body>
 </html>

@@ -49,12 +49,11 @@
                     Product Name: #{list.productName}<br></br>
                     Brand Name: #{list.brandName} <br></br>
 
-                    <h:button onclick="#{cartBean.addToCart()}" value="Add to cart" class="btn btn-default">
+                    <h:form>
+                        <h:commandLink action="#{cartBean.addToCart()}" value="Add to cart" class="btn btn-default">
                             <f:param name="id" value="#{list.id}" />
-                    </h:button>
-
-
-                    
+                        </h:commandLink>
+                    </h:form>
                 </h:column>
             </h:dataTable>
             
