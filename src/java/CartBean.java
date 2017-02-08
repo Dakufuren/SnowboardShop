@@ -53,6 +53,15 @@ public class CartBean {
         }
     }
     
+    public void clearCart(){
+        for (Snowboard s : cartList) {
+            if(s.getProductName().equals(selectedItem)){
+                cartList.remove(s);
+                System.out.println("Removed!!!!");
+            }
+        }
+    }
+    
     public void addToCart(){
         FacesContext fc = FacesContext.getCurrentInstance();
         Map<String,String> params = fc.getExternalContext().getRequestParameterMap();
