@@ -120,5 +120,39 @@ public class HibernateHelper {
         
          return isAdmin;
     }
+     
+        public long nrOfBoards(){
+            Transaction tx = null;
+            long count = 0;
+            
+            try{
+             tx = session.beginTransaction();
+             count = ((Long)session.createQuery("select count(*) from Snowboard").uniqueResult());
+             tx.commit();
+            
+            }catch(Exception e){
+             e.printStackTrace();
+         }
+            
+            return count;
+        }
+        
+        public long nrOfAccounts(){
+            Transaction tx = null;
+            long count = 0;
+            
+            try{
+             tx = session.beginTransaction();
+             count = ((Long)session.createQuery("select count(*) from Account").uniqueResult());
+             tx.commit();
+            
+            }catch(Exception e){
+             e.printStackTrace();
+         }
+            
+            return count;
+        }
+
+   
         
 }

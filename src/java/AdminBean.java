@@ -5,6 +5,8 @@
  */
 
 import Hibernate.HibernateHelper;
+import Hibernate.Snowboard;
+import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 
@@ -16,9 +18,12 @@ import javax.enterprise.context.Dependent;
 @Dependent
 public class AdminBean {
     
+    
     private String email;
     HibernateHelper hh = new HibernateHelper();
     DataStorage ds = new DataStorage();
+    
+    
     private static boolean test;
 
     /**
@@ -41,6 +46,22 @@ public class AdminBean {
             System.out.println("YOU ARE NOT LOGGED IN AS ADMIN" +  "" +email + "" + checkIfAdmin);
         
     }
+    
+    public long getAmountOfBoards(){
+        long amount = hh.nrOfBoards();
+        
+        return amount;
+    }
+    
+    public long getAmountOfAccounts(){
+        long amount = hh.nrOfAccounts();
+        
+        return amount;
+    }
+    
+    
+    
+    
 
     /**
      * @return the test
@@ -55,5 +76,7 @@ public class AdminBean {
     public void setTest(boolean test) {
         this.test = test;
     }
+    
+    
     
 }
