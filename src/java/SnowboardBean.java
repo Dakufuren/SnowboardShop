@@ -42,7 +42,11 @@ public class SnowboardBean {
      * Creates a new instance of SnowboardBean
      */
     public SnowboardBean() {
-        
+
+    }
+    
+    @PostConstruct
+    public void init() {
         snowList = ds.getSnowlist();
         
         if(ds.getEmail() != null){
