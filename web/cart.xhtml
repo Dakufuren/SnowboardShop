@@ -74,7 +74,7 @@
                 Quantity: #{cartBean.calcQuantity()}<br></br><br></br>
                 <h:form>
                     <h:commandLink id="clearCart" action="#{cartBean.clearCart()}" value="Clear Cart" class="btn btn-default btn-xs"/>
-
+                    &nbsp;
                     <c:set var="cartLogged" scope="session" value="#{snowboardBean.loggedIn}"/>
                     <c:choose>
                         <c:when test="${cartLogged == 'Login'}">
