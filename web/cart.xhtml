@@ -70,22 +70,21 @@
 
 
                 <br></br>
-                Total Sum: #{cartBean.calcTotalSum()}            
-                <br></br>
-                <br></br>
+                Total Sum: #{cartBean.calcTotalSum()}<br></br>
+                Quantity: #{cartBean.calcQuantity()}<br></br><br></br>
                 <h:form>
                     <h:commandLink id="clearCart" action="#{cartBean.clearCart()}" value="Clear Cart" class="btn btn-default btn-xs"/>
 
                     <c:set var="cartLogged" scope="session" value="#{snowboardBean.loggedIn}"/>
                     <c:choose>
                         <c:when test="${cartLogged == 'Login'}">
+                            <br></br><br></br>
                             <div class="alert alert-danger">
-                                <strong>Not Logged in,</strong>, you need to login to be able to buy the items.
+                                <strong>Not Logged in</strong>, you need to login to be able to buy the items.
                             </div>
                         </c:when>
-                        <h:commandLink id="clearCart" action="#{cartBean.clearCart()}" value="Clear Cart" class="btn btn-default btn-xs"/>
                         <c:otherwise>
-                            <h:button id="checkoutButton" outcome="checkout" value="Checkout Items" class="btn btn-default btn-xs"/>
+                            <h:button id="checkoutButton" outcome="checkout" value="Checkout Items" class="btn btn-default btn-xs"/><br></br><br></br>
                             <div class="alert alert-success">
                                 <strong>Logged in</strong>, you are now able to checkout the items.
                                 
