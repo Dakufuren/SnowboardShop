@@ -86,7 +86,14 @@ public class SignupBean {
     
     public void addAccount(String email, String name, int ssn, String password){
         
-    hh.addAccount(email, name, ssn, password);
+        try {
+            hh.addAccount(email, name, ssn, password);
+            
+            MailBean mb = new MailBean();
+            mb.sendSignupEmail(email);
+        } catch (Exception e) {
+            System.out.println("");
+        }
 }
     
     

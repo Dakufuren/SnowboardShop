@@ -57,6 +57,10 @@ public class CartBean {
         cartList.clear();
         changeOnList = true;
     }
+    
+    public void saveCart() {
+        ds.updateCart(cartList);
+    }
 
     public void addToCart() {
         FacesContext fc = FacesContext.getCurrentInstance();
@@ -73,11 +77,6 @@ public class CartBean {
     public String loginMessage() {
         
         return "message";
-    }
-    
-    public void checkOut() {
-  
-            
     }
 
     public int calcTotalSum() {

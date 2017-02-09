@@ -42,7 +42,9 @@
                     </ul>
                 </div>
             </nav>
-
+            
+            #{cartBean.saveCart()}
+            
             <div class="well">
                 <h2>Success! You bought the following items:</h2>
                 
@@ -68,6 +70,7 @@
                 
                 Total Sum: #{cartBean.calcTotalSum()}<br></br>
                 Quantity of boards: #{cartBean.calcQuantity()}<br></br><br></br>
+                #{mailBean.sendSuccessEmail()}
                 
                 DOOOO EMAIL CONFIRMATION
                 
