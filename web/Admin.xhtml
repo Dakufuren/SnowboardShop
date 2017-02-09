@@ -10,7 +10,9 @@
         <title>Admin</title>
     </h:head>
      <f:metadata>
-        <f:viewAction action="#{adminBean.checkAdmin()}" />  //incase someone is already logged in and does not go to login page, we will check if this user is an admin or not when we load the page
+        <f:viewAction action="#{adminBean.checkAdmin()}" />//incase someone is already logged in and does not go to login page, we will check if this user is an admin or not when we load the page
+        <f:viewAction action="#{adminBean.falseBoard()}" /> // HÄR SKA SKITEN FÖR HELVETE ÄNDRAS VARFÖR GÖR DEN INTE DET?!?!?!?!?!?
+        <f:viewAction action="#{adminBean.checkIfBoardAdded()}" />
     </f:metadata>
     
     <h:body>
@@ -109,7 +111,7 @@
                 <br></br>
                  <br></br>
 
-                <c:set var="boardAdded" scope="session" value="#{adminBean.checkIfBoardAdded()}"/>
+                <c:set var="boardAdded" value="#{adminBean.checkIfBoardAdded()}"/>
                         <c:choose>
                             <c:when test="${boardAdded == 'true'}">
                                 <div class="alert alert-success col-xs-8 col-md-offset-2">

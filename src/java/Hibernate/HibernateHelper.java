@@ -156,7 +156,7 @@ public class HibernateHelper {
         
         public void addSnowboard(String brandName, String productName, String description, String pictureLink, Integer boardLength, Integer price){
         Transaction tx = null;
-        boardAdded = false;
+        
         
         try{
             tx = session.beginTransaction();
@@ -165,6 +165,7 @@ public class HibernateHelper {
             tx.commit();
             System.out.println("ADDED BOARD!!!!!!!!!!!!!!!!!!!!!!!!");
             boardAdded = true;
+            
         
         }catch (Exception e){
             e.printStackTrace();

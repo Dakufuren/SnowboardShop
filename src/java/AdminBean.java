@@ -33,7 +33,7 @@ public class AdminBean {
     
     
     private static boolean test;
-    private static boolean boardAdded;
+    private static boolean boardAdded = false;
 
     /**
      * Creates a new instance of AdminBean
@@ -58,8 +58,13 @@ public class AdminBean {
     
     public boolean checkIfBoardAdded(){
         boardAdded = hh.isBoardAdded();
-        
+        System.out.println("STATE OF BOOLEAN IS NOW " + boardAdded);
         return boardAdded;
+    }
+    
+    public boolean falseBoard(){ //VARFÖR I HELVETE ÄNDRAS DEN INTE TILL FAAAALLSSEEEE!?!?!?!?!?!?!?
+       boardAdded = false;
+       return boardAdded;
     }
     
     public long getAmountOfBoards(){
