@@ -15,6 +15,7 @@
     <h:body>
         <div class="container">
 
+            <h:form>
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -28,19 +29,23 @@
                         <c:set var="loggedIn" scope="session" value="#{snowboardBean.loggedIn}"/>
                         <c:choose>
                             <c:when test="${loggedIn == 'Login'}">
-                                <li><h:link outcome="login"><span class="glyphicon glyphicon-user"></span>#{snowboardBean.loggedIn}</h:link></li>
+                                <li><h:link outcome="login"><span class="glyphicon glyphicon-user"></span> #{snowboardBean.loggedIn}</h:link></li>
                                 <li><h:link outcome="signup"><span class="glyphicon glyphicon-log-in"></span> Signup</h:link></li>
                             </c:when>    
                             <c:otherwise>
-                                <li><h:link outcome="Admin" rendered="#{adminBean.test}"><span class="glyphicon glyphicon-wrench"></span>Admin</h:link></li>
-                                <li><h:link outcome="index"><span class="glyphicon glyphicon-user"></span>#{snowboardBean.loggedIn}</h:link></li>
+                                
+                                <li><h:link outcome="Admin" rendered="#{adminBean.test}"><span class="glyphicon glyphicon-wrench"></span> Admin</h:link></li>
+                                <li><h:link outcome="index"><span class="glyphicon glyphicon-user"></span> #{snowboardBean.loggedIn}</h:link></li>
+                                <li><h:commandLink action="#{loginBean.logout()}"><span class="glyphicon glyphicon-log-out"></span> Logout</h:commandLink></li>
+                                
                             </c:otherwise>
                         </c:choose>
                         <li><h:link outcome="cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</h:link></li>
                     </ul>
                 </div>
             </nav>
-
+                </h:form>
+            
             <div class="well">
                 <h2>Snowshop</h2>
                 <p>The best place to buy premium boards</p>
@@ -57,7 +62,7 @@
                                 </div>
                                 <div class="panel-footer">
                                     Price: #{list.price}<br></br>
-                                    Brand Name: #{list.brandName}<br></br>q
+                                    Brand Name: #{list.brandName}<br></br>
                                     <h:button outcome="infopage.xhtml" value="View Product" class="btn btn-default btn-xs">
                                         <f:param name="id" value="#{list.id}" />
                                     </h:button>

@@ -45,10 +45,33 @@
 
             <div class="well">
                 <h2>Checkout</h2>
+                <h3>Are you sure you want to buy the following items?</h3>
 
+                <h:dataTable value="#{cartBean.cartList}" var="list" 
+                             styleClass="table table-hover">
+                    <h:column>    				
+                        <f:facet name="header">Product Name  </f:facet>    				
+                            #{list.productName}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Brand Name  </f:facet>
+                            #{list.brandName}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Board Length  </f:facet>
+                            #{list.boardLength}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Price  </f:facet>
+                            #{list.price}
+                    </h:column>
+                </h:dataTable>
+                
+                Total Sum: #{cartBean.calcTotalSum()}<br></br>
+                Quantity: #{cartBean.calcQuantity()}<br></br><br></br>
+                
                 <form action="${initParam['posturl']}" method="POST">
-
-                    <h1>PAY UP BITCH</h1>
+                    
                     <input type="hidden" name="upload" value="1"/>
                     <input type="hidden" name="return" value="${initParam['returnurl']}"/>
                     <input type="hidden" name="cmd" value="_cart"/>
@@ -58,9 +81,10 @@
                             <input type="hidden" name="item_name_1" value="Snowboards"/>
                             <input type="hidden" name="amount_1" value="#{cartBean.calcTotalSum()}"/>
                             <input type="hidden" name="quantity_1" value="1"/>
-                            <input type="submit" value="Payment"/>
+                            <input type="submit" value="Yes" class="btn btn-default btn-xs"/>
                 </form>
-
+                
+                <h:button outcome="cart.xhtml" value="No" class="btn btn-default btn-xs" />
 
 
 

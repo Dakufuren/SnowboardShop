@@ -41,43 +41,57 @@
             <div class="well">
                 <h2>Cart</h2><br></br>
                 Your items in the cart:<br></br>
-            <hr></hr>
-            <h:form>
-                <h:dataTable value="#{cartBean.cartList}" var="list" 
-                             styleClass="table table-hover">
-                    <h:column>    				
-                        <f:facet name="header">Product Name  </f:facet>    				
-                            #{list.productName}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Brand Name  </f:facet>
-                            #{list.brandName}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Board Length  </f:facet>
-                            #{list.boardLength}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Price  </f:facet>
-                            #{list.price}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Remove Product  </f:facet>
-                        <h:commandLink id="removeSelected" action="#{cartBean.delFromCart(list)}" value="Remove Selected" class="btn btn-default btn-xs"/>
-                    </h:column>
-                </h:dataTable>
-            </h:form>
-            
+                <hr></hr>
+                <h:form>
+                    <h:dataTable value="#{cartBean.cartList}" var="list" 
+                                 styleClass="table table-hover">
+                        <h:column>    				
+                            <f:facet name="header">Product Name  </f:facet>    				
+                                #{list.productName}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Brand Name  </f:facet>
+                                #{list.brandName}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Board Length  </f:facet>
+                                #{list.boardLength}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Price  </f:facet>
+                                #{list.price}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Remove Product  </f:facet>
+                            <h:commandLink id="removeSelected" action="#{cartBean.delFromCart(list)}" value="Remove Selected" class="btn btn-default btn-xs"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
 
-            <br></br>
-            Total Sum: #{cartBean.calcTotalSum()}            
-            <br></br>
-            <br></br>
-            <h:form>
-                <h:commandLink id="clearCart" action="#{cartBean.clearCart()}" value="Clear Cart" class="btn btn-default btn-xs"/>
-            &nbsp;
-            <h:button id="checkoutButton" outcome="checkout" value="Checkout Items" class="btn btn-default btn-xs"/>
-            </h:form>
+
+                <br></br>
+                Total Sum: #{cartBean.calcTotalSum()}<br></br>
+                Quantity: #{cartBean.calcQuantity()}<br></br><br></br>
+                <h:form>
+                    <h:commandLink id="clearCart" action="#{cartBean.clearCart()}" value="Clear Cart" class="btn btn-default btn-xs"/>
+
+                    <c:set var="cartLogged" scope="session" value="#{snowboardBean.loggedIn}"/>
+                    <c:choose>
+                        <c:when test="${cartLogged == 'Login'}">
+                            <br></br><br></br>
+                            <div class="alert alert-danger">
+                                <strong>Not Logged in</strong>, you need to login to be able to buy the items.
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <h:button id="checkoutButton" outcome="checkout" value="Checkout Items" class="btn btn-default btn-xs"/><br></br><br></br>
+                            <div class="alert alert-success">
+                                <strong>Logged in</strong>, you are now able to checkout the items.
+                                
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+                </h:form>
             </div>
         </div>
     </h:body>
