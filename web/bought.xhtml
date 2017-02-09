@@ -44,8 +44,31 @@
             </nav>
 
             <div class="well">
-                <h2>Success!!!</h2>
-
+                <h2>Success! You bought the following items:</h2>
+                
+                <h:dataTable value="#{cartBean.cartList}" var="list" 
+                             styleClass="table table-hover">
+                    <h:column>    				
+                        <f:facet name="header">Product Name  </f:facet>    				
+                            #{list.productName}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Brand Name  </f:facet>
+                            #{list.brandName}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Board Length  </f:facet>
+                            #{list.boardLength}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Price  </f:facet>
+                            #{list.price}
+                    </h:column>
+                </h:dataTable>
+                
+                Total Sum: #{cartBean.calcTotalSum()}<br></br>
+                Quantity of boards: #{cartBean.calcQuantity()}<br></br><br></br>
+                
                 DOOOO EMAIL CONFIRMATION
                 
                 #{cartBean.clearCart()}
