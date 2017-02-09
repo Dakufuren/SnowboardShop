@@ -89,12 +89,15 @@ public class SignupBean {
         try {
             hh.addAccount(email, name, ssn, password);
             
+            
             MailBean mb = new MailBean();
             mb.sendSignupEmail(email);
         } catch (Exception e) {
             System.out.println("");
         }
 }
+    
+    
     
     
     

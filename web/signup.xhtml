@@ -41,7 +41,7 @@
                 <br></br>
                 Email <h:inputText binding="#{email}" class="form-control" />
                 <br></br>
-                Password <h:inputText binding="#{password}" class="form-control" />
+                Password <h:inputSecret binding="#{password}"  class="form-control" />
                 <br></br>
                 <h:commandButton value="Submit" class="btn btn-default" action="#{signupBean.addAccount(email.value, name.value, ssn.value, password.value)}" />
                 

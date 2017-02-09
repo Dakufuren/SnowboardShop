@@ -37,7 +37,7 @@
             
                 Email: <h:inputText binding="#{email}" class="form-control" />
                 <br></br>
-                Password: <h:inputText binding="#{password}" class="form-control" />
+                Password: <h:inputSecret binding="#{password}" class="form-control" />
                 <br></br>
                 
                 <h:commandButton value="Login" class="btn btn-default" action="#{loginBean.validateLogin(email.value,password.value)}">
