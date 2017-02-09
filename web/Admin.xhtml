@@ -12,6 +12,7 @@
      <f:metadata>
         <f:viewAction action="#{adminBean.checkAdmin()}" />  //incase someone is already logged in and does not go to login page, we will check if this user is an admin or not when we load the page
     </f:metadata>
+    
     <h:body>
         <div class="container">
             <nav class="navbar navbar-inverse">
@@ -85,6 +86,52 @@
       </tr>
   </table>
         </div>
+            <div class="row">
+        <div class="col-md-6 col-md-offset-4">
+            
+            <h:form class="col-xs-6">
+              <h2>Add another board to the store here</h2>  
+   
+                
+                Brand name: <h:inputText binding="#{bName}" class="form-control" />
+                <br></br>
+                Product name: <h:inputText binding="#{pName}" class="form-control" />
+                <br></br>
+                Description <h:inputText binding="#{desc}" class="form-control" />
+                <br></br>
+                Link to picture <h:inputText binding="#{pLink}" class="form-control" />
+                <br></br>
+                Length of board <h:inputText binding="#{length}" class="form-control" />
+                <br></br>
+                Price <h:inputText binding="#{price}" class="form-control" />
+                <br></br>
+                <h:commandButton value="Add board" class="btn btn-default" action="#{adminBean.addSnowboard(bName.value, pName.value, desc.value, pLink.value, length.value, price.value)}" />
+                <br></br>
+                 <br></br>
+
+                <c:set var="boardAdded" scope="session" value="#{adminBean.checkIfBoardAdded()}"/>
+                        <c:choose>
+                            <c:when test="${boardAdded == 'true'}">
+                                <div class="alert alert-success col-xs-8 col-md-offset-2">
+    <strong>Success!</strong> Board added to the store!
+  </div>
+                                
+                            </c:when>    
+                            <c:otherwise>
+                                
+                                
+                            </c:otherwise>
+                        </c:choose>
+                                                    
+            </h:form>
+            
+            
+        </div>
+            </div>
+        
+           
+
+        
     </h:body>
 </html>
 

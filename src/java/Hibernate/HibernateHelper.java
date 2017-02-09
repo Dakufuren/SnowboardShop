@@ -17,6 +17,7 @@ import org.hibernate.Transaction;
 public class HibernateHelper {
 
     Session session = null;
+    private static boolean boardAdded = false;
     
 
     public HibernateHelper() {
@@ -152,6 +153,38 @@ public class HibernateHelper {
             
             return count;
         }
+        
+        public void addSnowboard(String brandName, String productName, String description, String pictureLink, Integer boardLength, Integer price){
+        Transaction tx = null;
+        boardAdded = false;
+        
+        try{
+            tx = session.beginTransaction();
+            Snowboard s = new Snowboard(brandName, productName, description, pictureLink, boardLength, price);
+            session.save(s);
+            tx.commit();
+            System.out.println("ADDED BOARD!!!!!!!!!!!!!!!!!!!!!!!!");
+            boardAdded = true;
+        
+        }catch (Exception e){
+            e.printStackTrace();
+        } 
+        
+    } 
+
+    /**
+     * @return the boardAdded
+     */
+    public static boolean isBoardAdded() {
+        return boardAdded;
+    }
+
+    /**
+     * @param aBoardAdded the boardAdded to set
+     */
+    public static void setBoardAdded(boolean aBoardAdded) {
+        boardAdded = aBoardAdded;
+    }
 
    
         
