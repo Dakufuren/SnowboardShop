@@ -87,4 +87,14 @@ public class LoginBean {
             System.out.println("YOU ARE NOT LOGGED IN");
         }
     }
+    
+    public void logout() throws IOException {
+        ds.setEmail("Login");
+        ds.setPass("");
+        
+        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+        ec.invalidateSession();
+        ec.redirect(ec.getRequestContextPath() + "");
+        
+    }
 }
