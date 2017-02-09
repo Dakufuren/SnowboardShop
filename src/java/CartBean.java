@@ -97,6 +97,15 @@ public class CartBean {
 
         return totalSum;
     }
+    
+    public int calcQuantity() {
+        int quantity = 0;
+            for (Snowboard s : cartList) {
+                quantity++;
+            }
+     
+        return quantity;
+    }
 
     /**
      * @return the selectedItem

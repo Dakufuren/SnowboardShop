@@ -44,26 +44,11 @@
             </nav>
 
             <div class="well">
-                <h2>Checkout</h2>
+                <h2>Success!!!</h2>
 
-                <form action="${initParam['posturl']}" method="POST">
-
-                    <h1>PAY UP BITCH</h1>
-                    <input type="hidden" name="upload" value="1"/>
-                    <input type="hidden" name="return" value="${initParam['returnurl']}"/>
-                    <input type="hidden" name="cmd" value="_cart"/>
-                    <input type="hidden" name="business" value="${initParam['business']}"/>
-                    <input type="hidden" name="currency_code" value="${initParam['currencycode']}"/>
-
-                            <input type="hidden" name="item_name_1" value="Snowboards"/>
-                            <input type="hidden" name="amount_1" value="#{cartBean.calcTotalSum()}"/>
-                            <input type="hidden" name="quantity_1" value="1"/>
-                            <input type="submit" value="Payment"/>
-                </form>
-
-
-
-
+                DOOOO EMAIL CONFIRMATION
+                
+                #{cartBean.clearCart()}
             </div>
         </div>
     </h:body>
