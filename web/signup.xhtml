@@ -37,7 +37,7 @@
                 
                 Name: <h:inputText binding="#{name}" class="form-control" />
                 <br></br>
-                Social security number: <h:inputText binding="#{ssn}" class="form-control" />
+                Social security number: <h:inputText onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;" binding="#{ssn}" class="form-control" />
                 <br></br>
                 Email <h:inputText binding="#{email}" class="form-control" />
                 <br></br>
