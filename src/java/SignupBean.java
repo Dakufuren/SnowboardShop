@@ -7,6 +7,8 @@
 import Hibernate.HibernateHelper;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -92,6 +94,9 @@ public class SignupBean {
             
             MailBean mb = new MailBean();
             mb.sendSignupEmail(email);
+            
+            ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+            context.redirect("login.xhtml");
         } catch (Exception e) {
             System.out.println("");
         }
