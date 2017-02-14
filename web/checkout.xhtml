@@ -12,6 +12,7 @@
     </f:metadata>
     <h:body>
         <div class="container">
+            <h:form>
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -32,7 +33,7 @@
                                 <c:otherwise>
                                     <li><h:link outcome="Admin" rendered="#{adminBean.test}"><span class="glyphicon glyphicon-wrench"></span>Admin</h:link></li>
                                     <li><h:link outcome="index"><span class="glyphicon glyphicon-user"></span>#{snowboardBean.loggedIn}</h:link></li>
-                                    
+                                    <li><h:commandLink action="#{loginBean.logout()}"><span class="glyphicon glyphicon-log-out"></span> Logout</h:commandLink></li>
 
                                 </c:otherwise>
                         </c:choose>
@@ -43,6 +44,7 @@
                     </ul>
                 </div>
             </nav>
+            </h:form>
 
             <div class="well">
                 <h2>Checkout</h2>
